@@ -15,7 +15,7 @@ public class ClockInputHandler {
     }
 
     public String getClockInputString(String prompt) throws BadClockInput {
-        System.out.println(prompt);
+        System.out.print(prompt);
 
         if ( scanner.hasNextLine() ) {
             return scanner.nextLine();
