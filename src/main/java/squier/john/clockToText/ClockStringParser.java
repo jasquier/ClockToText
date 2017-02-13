@@ -30,11 +30,11 @@ public class ClockStringParser {
             hoursAsString = extractHoursFromInputToParse();
             minutesAsString = extractMinutesFromInputToParse();
             meridiemAsString = extractMeridiemFromInputToParse();
-            System.out.println(hoursAsString + " " + minutesAsString + " " + meridiemAsString);
+            //System.out.println(hoursAsString + " " + minutesAsString + " " + meridiemAsString);
         }
         catch ( BadParseException e ) {
-            e.printBadParseExceptionMessageToSTDOUT();
-            System.out.println("YOU GET A DEFAULT TIME OF 12:00am");
+            e.printBadParseExceptionMessageToSTDERR();
+            System.err.println("YOU GET A DEFAULT TIME OF 12:00am");
             hoursAsString = "12";
             minutesAsString = "00";
             meridiemAsString = "am";

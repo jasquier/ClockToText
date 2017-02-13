@@ -5,9 +5,9 @@ package squier.john.clockToText;
  */
 public class BadParseException extends Exception {
 
-    public String printBadParseExceptionMessageToSTDOUT() {
+    public String printBadParseExceptionMessageToSTDERR() {
         String message = "THERE WAS AN ERROR WHILE PARSING YOUR INPUT";
-        System.out.println(message);
+        System.err.println(message);
         return message;
     }
 }

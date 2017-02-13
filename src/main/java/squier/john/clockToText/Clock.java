@@ -39,7 +39,7 @@ public class Clock {
             hours = Integer.parseInt(hoursAsString);
         }
         catch( NumberFormatException e ) {
-            System.out.println("THERE WAS A PROBLEM CONVERTING YOUR HOURS, DEFAULTING TO 12");
+            System.err.println("THERE WAS A PROBLEM CONVERTING YOUR HOURS, DEFAULTING TO 12");
             hours = 12;
         }
 
@@ -51,7 +51,7 @@ public class Clock {
            minutes = Integer.parseInt(minutesAsString);
        }
        catch( NumberFormatException e ) {
-           System.out.println("THERE WAS A PROBLEM CONVERTING YOUR MINUTES, DEFAULTING TO 00");
+           System.err.println("THERE WAS A PROBLEM CONVERTING YOUR MINUTES, DEFAULTING TO 00");
            minutes = 00;
        }
 
@@ -66,7 +66,7 @@ public class Clock {
             meridiem = Meridiem.PM;
         }
         else {
-            System.out.println("THERE WAS A PROBLEM CONVERTING YOUR MERIDIEM, DEFAULTING TO AM");
+            System.err.println("THERE WAS A PROBLEM CONVERTING YOUR MERIDIEM, DEFAULTING TO AM");
             meridiem = Meridiem.AM;
         }
 

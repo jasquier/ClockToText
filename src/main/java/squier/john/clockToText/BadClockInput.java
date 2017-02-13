@@ -7,9 +7,9 @@ import org.junit.rules.ExpectedException;
  */
 public class BadClockInput extends Exception {
 
-    public String printBadClockInputMessageToSTDOUT() {
+    public String printBadClockInputMessageToSTDERR() {
         String message = "YOU HAVE ENTERED A BAD INPUT";
-        System.out.println(message);
+        System.err.println(message);
         return message;
     }
 }

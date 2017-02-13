@@ -17,10 +17,10 @@ public class BadClockInputTest {
     }
 
     @Test
-    public void printBadClockInputMessageToSTDOUT() {
+    public void printBadClockInputMessageToSTDERR() {
         String expected = "YOU HAVE ENTERED A BAD INPUT";
 
-        String actual = badClockInput.printBadClockInputMessageToSTDOUT();
+        String actual = badClockInput.printBadClockInputMessageToSTDERR();
 
         Assert.assertEquals(expected, actual);
     }
