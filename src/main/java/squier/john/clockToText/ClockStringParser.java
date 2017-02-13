@@ -8,11 +8,11 @@ import java.util.regex.Pattern;
  */
 public class ClockStringParser {
 
-    String inputToParse;
-    Pattern hoursPattern;
-    Pattern minutesPattern;
-    Pattern meridiemPattern;
-    Matcher matcher;
+    private String inputToParse;
+    private Pattern hoursPattern;
+    private Pattern minutesPattern;
+    private Pattern meridiemPattern;
+    private Matcher matcher;
 
     public ClockStringParser(String inputToParse) {
         this.inputToParse = inputToParse;
@@ -22,23 +22,29 @@ public class ClockStringParser {
     }
 
     public Clock splitClockStringIntoHoursMinsMeridiem() {
-        String hoursAsString;
-        String minutesAsString;
-        String meridiemAsString;
+        String hoursAsString = null;
+        String minutesAsString = null;
+        String meridiemAsString = null;
 
         try {
             hoursAsString = extractHoursFromInputToParse();
             minutesAsString = extractMinutesFromInputToParse();
             meridiemAsString = extractMeridiemFromInputToParse();
         }
-        catch ( Exception e ) {
+        catch ( BadParseException e ) {
+            e.printBadParseExceptionMessageToSTDOUT();
             e.printStackTrace();
+            System.out.println("YOU GET A DEFAULT TIME OF 10:00am");
+            hoursAsString = "10";
+            minutesAsString = "00";
+            meridiemAsString = "am";
         }
 
-        return null;
+        Clock newClock = new Clock(hoursAsString, minutesAsString, meridiemAsString);
+        return newClock;
     }
 
-    private String extractHoursFromInputToParse() throws Exception {
+    private String extractHoursFromInputToParse() throws BadParseException {
         matcher = hoursPattern.matcher(inputToParse);
 
         String hoursAsString = null;
@@ -51,13 +57,15 @@ public class ClockStringParser {
             return hoursAsString;
         }
         else {
-            throw new Exception();
+            throw new BadParseException();
         }
 
     }
 
-    private String extractMinutesFromInputToParse() throws Exception {
-        matcher = minutesPattern.matcher(inputToParse);
+    private String extractMinutesFromInputToParse() throws BadParseException {
+        String[] splitInput = inputToParse.split(":");
+
+        matcher = minutesPattern.matcher(splitInput[1]);
 
         String minutesAsString = null;
 
@@ -69,12 +77,12 @@ public class ClockStringParser {
             return minutesAsString;
         }
         else {
-            throw new Exception();
+            throw new BadParseException();
         }
 
     }
 
-    private String extractMeridiemFromInputToParse() throws Exception {
+    private String extractMeridiemFromInputToParse() throws BadParseException {
         matcher = meridiemPattern.matcher(inputToParse);
 
         String meridiemAsString = null;
@@ -87,7 +95,7 @@ public class ClockStringParser {
             return meridiemAsString;
         }
         else {
-            throw new Exception();
+            throw new BadParseException();
         }
     }
 }

@@ -33,4 +33,15 @@ public class Clock {
     private Meridiem convertMeridiemStringToMeridiem() {
         return null;
     }
+
+    public boolean equals(Clock other) {
+        if ( this.hoursAsString.equals(other.hoursAsString)
+                && this.minutesAsString.equals(other.minutesAsString)
+                && this.meridiemAsString.equals(other.meridiemAsString) ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
