@@ -25,10 +25,28 @@ public class ClockOutputterTest {
     }
 
     @Test
-    public void printClockToSTDOUTInWordForm() {
-        String expected = "three thirty pm";
+    public void printCloc1ToSTDOUTInWordFormTest() {
+        String expected = "three thirty am";
 
         String actual = clockOutputter1.printClockToSTDOUTInWordForm();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printClock2ToSTDOUTInWordFormTest() {
+        String expected = "twelve am";
+
+        String actual = clockOutputter2.printClockToSTDOUTInWordForm();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void printClock3ToSTDOUTInWordFormTest() {
+        String expected = "five fifty-five pm";
+
+        String actual = clockOutputter3.printClockToSTDOUTInWordForm();
 
         Assert.assertEquals(expected, actual);
     }

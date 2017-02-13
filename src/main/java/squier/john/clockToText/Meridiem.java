@@ -7,5 +7,11 @@ public enum Meridiem {
     AM, PM;
 
     public String toString() {
-        return null;
-    }}
+        if ( this.equals(Meridiem.AM) ) {
+            return "am";
+        }
+        else {
+            return "pm";
+        }
+    }
+}
