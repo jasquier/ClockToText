@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class ClockInputHandler {
 
-    Scanner scanner;
+    private Scanner scanner;
 
     public ClockInputHandler(InputStream in) {
         scanner = new Scanner(in);
