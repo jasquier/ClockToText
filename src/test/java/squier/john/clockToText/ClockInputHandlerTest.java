@@ -11,8 +11,8 @@ import java.io.ByteArrayInputStream;
  */
 public class ClockInputHandlerTest {
 
-    ClockInputHandler clockInputHandler1, clockInputHandler2, clockInputHandler3;
-    ByteArrayInputStream in1, in2, in3;
+    ClockInputHandler clockInputHandler1, clockInputHandler2, clockInputHandler3, clockInputHandler4;
+    ByteArrayInputStream in1, in2, in3, in4;
 
     @Before
     public void setup() {
@@ -24,6 +24,9 @@ public class ClockInputHandlerTest {
 
         in3 = new ByteArrayInputStream("11:22am".getBytes());
         clockInputHandler3 = new ClockInputHandler(in3);
+
+        in4 = new ByteArrayInputStream("".getBytes());
+        clockInputHandler4 = new ClockInputHandler(in4);
     }
 
     @Test
@@ -51,5 +54,10 @@ public class ClockInputHandlerTest {
         String actual = clockInputHandler3.getClockInputString("");
 
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getClockInputStringNoInputTest() {
+        Assert.assertNull(clockInputHandler4.getClockInputString(""));
     }
 }
