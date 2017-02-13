@@ -33,7 +33,13 @@ public class ClockInputHandlerTest {
     public void getClockInputStringTestOne() {
         String expected = "3:30pm";
 
-        String actual = clockInputHandler1.getClockInputString("");
+        String actual = null;
+
+        try {
+            actual = clockInputHandler1.getClockInputString("");
+        } catch (BadClockInput badClockInput) {
+            badClockInput.printStackTrace();
+        }
 
         Assert.assertEquals(expected, actual);
     }
@@ -42,7 +48,13 @@ public class ClockInputHandlerTest {
     public void getClockInputStringTestTwo() {
         String expected = "03:30pm";
 
-        String actual = clockInputHandler2.getClockInputString("");
+        String actual = null;
+
+        try {
+            actual = clockInputHandler2.getClockInputString("");
+        } catch (BadClockInput badClockInput) {
+            badClockInput.printStackTrace();
+        }
 
         Assert.assertEquals(expected, actual);
     }
@@ -51,13 +63,19 @@ public class ClockInputHandlerTest {
     public void getClockInputStringTestThree() {
         String expected = "11:22am";
 
-        String actual = clockInputHandler3.getClockInputString("");
+        String actual = null;
+
+        try {
+            actual = clockInputHandler3.getClockInputString("");
+        } catch (BadClockInput badClockInput) {
+            badClockInput.printStackTrace();
+        }
 
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void getClockInputStringNoInputTest() {
+    @Test(expected = BadClockInput.class)
+    public void getClockInputStringNoInputTest() throws BadClockInput {
         Assert.assertNull(clockInputHandler4.getClockInputString(""));
     }
 }

@@ -14,15 +14,14 @@ public class ClockInputHandler {
         scanner = new Scanner(in);
     }
 
-    public String getClockInputString(String prompt) {
+    public String getClockInputString(String prompt) throws BadClockInput {
         System.out.println(prompt);
 
         if ( scanner.hasNextLine() ) {
             return scanner.nextLine();
         }
         else {
-            // should throw an exception
-            return null;
+            throw new BadClockInput();
         }
     }
 
