@@ -5,12 +5,12 @@ package squier.john.clockToText;
  */
 public class Clock {
 
-    String hoursAsString;
-    String minutesAsString;
-    String meridiemAsString;
-    Integer hours;
-    Integer minutes;
-    Meridiem meridiem;
+    private String hoursAsString;
+    private String minutesAsString;
+    private String meridiemAsString;
+    private Integer hours;
+    private Integer minutes;
+    private Meridiem meridiem;
 
     public Clock(String hoursAsString, String minutesAsString, String meridiemAsString) {
         this.hoursAsString =  hoursAsString;
@@ -22,16 +22,55 @@ public class Clock {
         this.meridiem =  convertMeridiemStringToMeridiem();
     }
 
+    public Integer getHours() {
+        return hours;
+    }
+
+    public Integer getMinutes() {
+        return minutes;
+    }
+
+    public Meridiem getMeridiem() {
+        return meridiem;
+    }
+
     private Integer convertHoursStringToInt() {
-        return null;
+        try {
+            hours = Integer.parseInt(hoursAsString);
+        }
+        catch( NumberFormatException e ) {
+            System.out.println("THERE WAS A PROBLEM CONVERTING YOUR HOURS, DEFAULTING TO 12");
+            hours = 12;
+        }
+
+        return hours;
     }
 
     private Integer convertMinutesStringToInt() {
-        return null;
+       try {
+           minutes = Integer.parseInt(minutesAsString);
+       }
+       catch( NumberFormatException e ) {
+           System.out.println("THERE WAS A PROBLEM CONVERTING YOUR MINUTES, DEFAULTING TO 00");
+           minutes = 00;
+       }
+
+       return minutes;
     }
 
     private Meridiem convertMeridiemStringToMeridiem() {
-        return null;
+        if ( meridiemAsString.toLowerCase().equals("am") ) {
+            meridiem = Meridiem.AM;
+        }
+        else if ( meridiemAsString.toLowerCase().equals("pm") ) {
+            meridiem = Meridiem.PM;
+        }
+        else {
+            System.out.println("THERE WAS A PROBLEM CONVERTING YOUR MERIDIEM, DEFAULTING TO AM");
+            meridiem = Meridiem.AM;
+        }
+
+        return meridiem;
     }
 
     public boolean equals(Clock other) {

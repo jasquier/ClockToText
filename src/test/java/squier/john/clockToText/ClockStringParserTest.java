@@ -50,4 +50,34 @@ public class ClockStringParserTest {
 
         Assert.assertTrue(expected.equals(actual));
     }
+
+    @Test
+    public void splitClockStringBadHoursTest() {
+        Clock expected = new Clock("12", "00", "am");
+
+        clockStringParser1 = new ClockStringParser("Bob:30pm");
+        Clock actual = clockStringParser1.splitClockStringIntoHoursMinsMeridiem();
+
+        Assert.assertTrue(expected.equals(actual));
+    }
+
+    @Test
+    public void splitClockStringBadMinutesTest() {
+        Clock expected = new Clock("12", "00", "am");
+
+        clockStringParser1 = new ClockStringParser("10:BOBpm");
+        Clock actual = clockStringParser1.splitClockStringIntoHoursMinsMeridiem();
+
+        Assert.assertTrue(expected.equals(actual));
+    }
+
+    @Test
+    public void splitClockBadMeridiemTest() {
+        Clock expected = new Clock("12", "00", "am");
+
+        clockStringParser1 = new ClockStringParser("10:30BoB");
+        Clock actual = clockStringParser1.splitClockStringIntoHoursMinsMeridiem();
+
+        Assert.assertTrue(expected.equals(actual));
+    }
 }
