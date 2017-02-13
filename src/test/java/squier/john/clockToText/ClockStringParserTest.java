@@ -1,5 +1,6 @@
 package squier.john.clockToText;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,17 +9,21 @@ import org.junit.Test;
  */
 public class ClockStringParserTest {
 
-    ClockStringParser clockStringParser;
-    String inputToParse;
+    ClockStringParser clockStringParser1;
+    String inputToParse1;
 
     @Before
     public void setup() {
-        inputToParse = "3:30pm";
-        clockStringParser = new ClockStringParser(inputToParse);
+        inputToParse1 = "3:30pm";
+        clockStringParser1 = new ClockStringParser(inputToParse1);
     }
 
     @Test
     public void splitClockStringIntoHoursMinsMeridiem() {
+        Clock expected = new Clock("3", "30", "pm");
 
+        Clock actual = clockStringParser1.splitClockStringIntoHoursMinsMeridiem();
+
+        Assert.assertEquals(expected, actual);
     }
 }

@@ -38,6 +38,7 @@ public class ClockInputHandlerTest {
         try {
             actual = clockInputHandler1.getClockInputString("");
         } catch (BadClockInput badClockInput) {
+            badClockInput.printBadClockInputMessageToSTDOUT();
             badClockInput.printStackTrace();
         }
 
@@ -53,6 +54,7 @@ public class ClockInputHandlerTest {
         try {
             actual = clockInputHandler2.getClockInputString("");
         } catch (BadClockInput badClockInput) {
+            badClockInput.printBadClockInputMessageToSTDOUT();
             badClockInput.printStackTrace();
         }
 
@@ -68,6 +70,7 @@ public class ClockInputHandlerTest {
         try {
             actual = clockInputHandler3.getClockInputString("");
         } catch (BadClockInput badClockInput) {
+            badClockInput.printBadClockInputMessageToSTDOUT();
             badClockInput.printStackTrace();
         }
 
