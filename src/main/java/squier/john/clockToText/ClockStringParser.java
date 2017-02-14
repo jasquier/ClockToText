@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 /**
  * Created by johnsquier on 2/13/17.
+ * @@@ make parser convert strings to ints and make a clock
+ *      that takes numbers in the constructor
  */
 public class ClockStringParser {
 
@@ -44,6 +46,7 @@ public class ClockStringParser {
         return newClock;
     }
 
+    // add range checking to hours 0-12
     private String extractHoursFromInputToParse() throws BadParseException {
         matcher = hoursPattern.matcher(inputToParse);
 
@@ -53,7 +56,9 @@ public class ClockStringParser {
             hoursAsString = matcher.group();
         }
 
-        if ( hoursAsString != null ) {
+        if ( hoursAsString != null
+                && Integer.parseInt(hoursAsString) >= 0
+                && Integer.parseInt(hoursAsString) <= 12 ) {
             return hoursAsString;
         }
         else {
@@ -62,6 +67,7 @@ public class ClockStringParser {
 
     }
 
+    // add range checking to minutes 0-59
     private String extractMinutesFromInputToParse() throws BadParseException {
         String[] splitInput = inputToParse.split(":");
 
@@ -73,7 +79,9 @@ public class ClockStringParser {
             minutesAsString = matcher.group();
         }
 
-        if ( minutesAsString != null ) {
+        if ( minutesAsString != null
+                && Integer.parseInt(minutesAsString) >= 0
+                && Integer.parseInt(minutesAsString) <= 59 ) {
             return minutesAsString;
         }
         else {
@@ -82,6 +90,7 @@ public class ClockStringParser {
 
     }
 
+    // extract should be one method and convert should be another
     private String extractMeridiemFromInputToParse() throws BadParseException {
         matcher = meridiemPattern.matcher(inputToParse);
 

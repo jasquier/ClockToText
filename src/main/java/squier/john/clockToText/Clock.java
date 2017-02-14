@@ -2,6 +2,8 @@ package squier.john.clockToText;
 
 /**
  * Created by johnsquier on 2/13/17.
+ * @@@ Fix Equals
+ * @@@ make clock constructor take numbers and meridiem enum
  */
 public class Clock {
 
@@ -73,6 +75,7 @@ public class Clock {
         return meridiem;
     }
 
+    // 01:23AM != 1:23AM in this equals!!!
     public boolean equals(Clock other) {
         if ( this.hoursAsString.equals(other.hoursAsString)
                 && this.minutesAsString.equals(other.minutesAsString)
