@@ -2,10 +2,11 @@ package squier.john.clockToText;
 
 /**
  * Created by johnsquier on 2/13/17.
+ * @@@ rework the conversion of ints to strings using / and %
  */
 public class ClockOutputter {
 
-    Clock toOutput;
+    private Clock toOutput;
 
     public ClockOutputter(Clock toOutput) {
         this.toOutput = toOutput;
@@ -17,6 +18,7 @@ public class ClockOutputter {
         output.append(convertHoursIntegerToWord());
         output.append(" ");
 
+        // leave out 0 so 3:00PM becomes three pm
         if ( !convertMinutesIntegerToWord().equals("") ) {
             output.append(convertMinutesIntegerToWord());
             output.append(" ");
@@ -43,10 +45,10 @@ public class ClockOutputter {
             case 10: return "ten";
             case 11: return "eleven";
             case 12: return "twelve";
-            default: return "";
+            default: return "HIT DEFAULT CASE";
         }
     }
-
+    // need to rework this
     private String convertMinutesIntegerToWord() {
         switch ( toOutput.getMinutes() ) {
             case 0: return "";
@@ -109,8 +111,22 @@ public class ClockOutputter {
             case 57: return "fifty-seven";
             case 58: return "fifty-eight";
             case 59: return "fifty-nine";
-            default: return "";
+            default: return "HIT DEFAULT CASE";
         }
+    }
+
+    private String convertMinutesIntegerToWord2() {
+        // kk here we go,
+        // special cases
+        //  0 : ""
+        //  1 <= x <= 9 : "oh x"
+        // 11 <= x <= 19 : "eleven, nineteen, etc"
+
+        // so check x % 10 == 0
+        // that means 0, 10, 20, 30, 40, 50
+        //  x / 10 = 1,2,3,4,5 put in a switch
+
+        return null;
     }
 
     private String convertMeridiemToWord() {

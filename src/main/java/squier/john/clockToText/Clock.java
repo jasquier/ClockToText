@@ -24,6 +24,12 @@ public class Clock {
         this.meridiem =  convertMeridiemStringToMeridiem();
     }
 
+    public Clock(Integer hours, Integer minutes, Meridiem meridiem) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.meridiem = meridiem;
+    }
+
     public Integer getHours() {
         return hours;
     }

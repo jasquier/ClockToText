@@ -7,12 +7,12 @@ public class App {
 
     public static void main(String[] args) {
         while (true) {
-            ClockInputHandler clockInputHandler = new ClockInputHandler(System.in);
+            ClockStringInputer clockStringInputer = new ClockStringInputer(System.in);
 
             String inputTime = null;
 
             try {
-                inputTime = clockInputHandler.getClockInputString("ENTER A TIME IN THE FORM HH:MMAM >>> ");
+                inputTime = clockStringInputer.getClockInputString("ENTER A TIME IN THE FORM HH:MMAM >>> ");
             } catch (BadClockInput badClockInput) {
                 badClockInput.printBadClockInputMessageToSTDERR();
                 System.err.println("EXITING NOW");

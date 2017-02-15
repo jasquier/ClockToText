@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 /**
  * Created by johnsquier on 2/13/17.
+ * @@@ move input handling to here or an input validator
  */
-public class ClockInputHandler {
+public class ClockStringInputer {
 
     private Scanner scanner;
 
-    public ClockInputHandler(InputStream in) {
+    public ClockStringInputer(InputStream in) {
         scanner = new Scanner(in);
     }
 
