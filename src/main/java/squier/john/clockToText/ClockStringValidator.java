@@ -14,5 +14,8 @@ public class ClockStringValidator {
 
     public ClockStringValidator(String toValidate) {
         this.toValidate = toValidate;
+
+        meridiemTime = Pattern.compile("[0\\d]\\d:\\d\\d[aApP][mM]");
+        militaryTime = Pattern.compile("\\d\\d\\d\\d");
     }
 }
